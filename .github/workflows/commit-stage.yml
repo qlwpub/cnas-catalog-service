@@ -27,7 +27,7 @@ jobs:
           path: ${{ github.workspace }}
           fail-build: false
           severity-cutoff: medium
-          acs-report-enabled: true
+          output-format: sarif
 
       - name: Upload vulnerability scanning report
         if: success() || failure()
