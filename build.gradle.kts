@@ -29,7 +29,6 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-webflux")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("org.springframework.retry:spring-retry")
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
 
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
