@@ -3,6 +3,7 @@ plugins {
 	id("org.springframework.boot") version "3.4.5"
 	id("io.spring.dependency-management") version "1.1.7"
 	kotlin("jvm") version "2.1.20"
+	kotlin("plugin.spring") version "2.1.20"
 }
 
 group = "com.polarbookshop"
@@ -21,6 +22,7 @@ repositories {
 extra["springCloudVersion"] = "2024.0.1"
 
 dependencies {
+	implementation("org.jetbrains.kotlin:kotlin-reflect")  // needed by spring boot
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
@@ -30,6 +32,8 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("org.springframework.retry:spring-retry")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+	runtimeOnly("org.postgresql:postgresql")
 
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }

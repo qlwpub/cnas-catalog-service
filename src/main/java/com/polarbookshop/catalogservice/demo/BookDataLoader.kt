@@ -13,6 +13,8 @@ class BookDataLoader(val bookrepository: BookRepository) {
 
     @EventListener(ApplicationReadyEvent::class)
     fun loadTestData() {
+        bookrepository.deleteAll()
+
         val books = listOf(
             Book(
                 isbn = "1234567891",
@@ -40,10 +42,6 @@ class BookDataLoader(val bookrepository: BookRepository) {
             ),
         )
 
-        for (book in books) {
-            if (!bookrepository.existsByIsbn(book.isbn)) {
-                bookrepository.save(book)
-            }
-        }
+        bookrepository.saveAll(books)
     }
 }

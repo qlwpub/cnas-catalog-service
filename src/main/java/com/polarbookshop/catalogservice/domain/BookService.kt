@@ -28,11 +28,20 @@ class BookService(
     fun updateBook(isbn: String, book: Book): Book {
         val found = bookRepo.findByIsbn(isbn)
 
-        if (found == null) {
-            return addBook(book)
+        return if (found == null) {
+            addBook(book)
         } else {
-            val bookToUpdate = Book(isbn, book.title, book.author, book.price)
-            return bookRepo.save(bookToUpdate)
+            val bookToUpdate = Book(
+                id = found.id,
+                isbn = isbn,
+                title = book.title,
+                author = book.author,
+                price = book.price,
+                version = found.version,
+                createdAt = found.createdAt,
+                lastModifiedDate = found.lastModifiedDate,
+                )
+            bookRepo.save(bookToUpdate)
         }
     }
 }
