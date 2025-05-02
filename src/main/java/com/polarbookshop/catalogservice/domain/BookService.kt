@@ -39,7 +39,7 @@ class BookService(
                 price = book.price,
                 version = found.version,
                 createdAt = found.createdAt,
-                lastModifiedDate = found.lastModifiedDate,
+                lastModifiedAt = found.lastModifiedAt,
                 )
             bookRepo.save(bookToUpdate)
         }

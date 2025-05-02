@@ -8,7 +8,6 @@ import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.annotation.Version
-import org.springframework.data.relational.core.mapping.Column
 import java.time.Instant
 
 data class Book(
@@ -40,10 +39,10 @@ data class Book(
     val version: Long? = null,
 
     @CreatedDate
-    @Column("created_at")
+    // @Column("created_at") // is not needed, the name is inferred from the property name
     val createdAt: Instant? = null,
 
     @LastModifiedDate
-    @Column("last_modified_at")
-    val lastModifiedDate: Instant? = null,
+    // @Column("last_modified_at") // originally it's named lastModifiedDate
+    val lastModifiedAt: Instant? = null,
 )

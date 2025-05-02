@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.json.JsonTest
 import org.springframework.boot.test.json.JacksonTester
+import java.time.Instant
 
 @JsonTest
 class BookJsonTests {
@@ -14,11 +15,13 @@ class BookJsonTests {
 
     @Test
     fun `serializes to JSON`() {
-        val book: Book = Book(
+        val book = Book(
             isbn = "1234567890",
             title = "Test Book",
             author = "Test Author",
-            price = 42.0
+            price = 42.0,
+            createdAt = Instant.now(),
+            lastModifiedAt = Instant.now(),
         )
 
         val content = json.write(book)
