@@ -27,7 +27,7 @@ class BookRepositoryJdbcTests {
 
     @Test
     fun `book can be found by isbn`() {
-        val isbn = "1234567890"
+        val isbn = "3245234890"
         val book = Book(isbn = isbn, title = "Test Book", author = "Test Author", price = 9.99)
         jdbcAggregateTemplate.insert(book)
 
