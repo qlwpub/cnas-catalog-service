@@ -30,6 +30,8 @@ data class Book(
     @field:NotBlank(message = "Author must be defined")
     val author: String,
 
+    val publisher: String? = null,
+
     @field:NotNull(message = "Price must be defined")
     @field:Positive(message = "Price must be greater than zero")
     val price: Double,
