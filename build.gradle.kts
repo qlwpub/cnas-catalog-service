@@ -71,10 +71,9 @@ tasks.bootRun {
 
 tasks.bootBuildImage {
 	imageName = project.name
-	environment.set(mapOf("BP_JVM_VERSION" to "17.*"))
-	// publish to registry
+	environment.set(mapOf("BP_JVM_VERSION" to "21.*"))
 /*
-	docker {
+	docker { // publish to registry, just demo, normally should be done in CI/CD
 		publishRegistry {
 			username = project.property("DOCKER_USERNAME").toString()
 			password = project.property("DOCKER_PAT").toString()
