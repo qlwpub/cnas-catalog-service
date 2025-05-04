@@ -31,9 +31,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.testcontainers:postgresql")
-	implementation("org.flywaydb:flyway-core")
 	// since flywaydb v10, specific database drivers are no longer included in the
 	// core library, so we need to add the database driver as a separate dependency
+	implementation("org.flywaydb:flyway-core")
 	implementation("org.flywaydb:flyway-database-postgresql")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -56,6 +56,30 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+// below will stop generating the xxx-plan.jar file
+// * tasks.named("jar") is a generic way to refer to a task
+// * tasks.jar can only be used for common-known tasks.
+/*
+tasks.jar {
+	enabled = false
+}
+*/
+
 tasks.bootRun {
 	systemProperty("spring.profiles.active", "testdata")
+}
+
+tasks.bootBuildImage {
+	imageName = project.name
+	environment.set(mapOf("BP_JVM_VERSION" to "17.*"))
+	// publish to registry
+/*
+	docker {
+		publishRegistry {
+			username = project.property("DOCKER_USERNAME").toString()
+			password = project.property("DOCKER_PAT").toString()
+			url = project.findProperty("DOCKER_URL").toString()
+		}
+	}
+*/
 }
