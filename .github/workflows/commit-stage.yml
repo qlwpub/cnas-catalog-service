@@ -1,12 +1,14 @@
 name: Commit Stage
-on: {push, workflow_dispatch}
+on: 
+  - push
+  - workflow_dispatch
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: qlwpub/catalog-service
   VERSION: latest
 
-jobs:
+jobs: 
   build:
     name: Build and Test
     runs-on: ubuntu-latest
