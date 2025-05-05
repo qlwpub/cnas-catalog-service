@@ -1,6 +1,8 @@
 spring:
   application:
     name: catalog-service
+  lifecycle: # work with the below shutdown: graceful
+    timeout-per-shutdown-phase: 15s
   config: # note this is in this level!!! `spring.config.import`
     import: "optional:configserver:"
   cloud:
@@ -29,6 +31,7 @@ logging.level.org.springframework.jdbc.core.StatementCreatorUtils: TRACE
 
 server:
   port: 9001
+  shutdown: graceful
   tomcat:
     connection-timeout: 2s
     keep-alive-timeout: 15s
