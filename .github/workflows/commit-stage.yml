@@ -1,5 +1,5 @@
 name: Commit Stage
-on: 
+on:
   - push
   - workflow_dispatch
 
@@ -8,7 +8,7 @@ env:
   IMAGE_NAME: qlwpub/catalog-service
   VERSION: latest
 
-jobs: 
+jobs:
   build:
     name: Build and Test
     runs-on: ubuntu-latest
@@ -18,17 +18,17 @@ jobs:
 
     steps:
       - name: Checkout src code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 21
           distribution: 'temurin'
           cache: gradle
 
       - name: Code vulnerability scanning
-        uses: anchore/scan-action@v3
+        uses: anchore/scan-action@v6
         id: scan
         with:
           path: ${{ github.workspace }}
@@ -45,6 +45,14 @@ jobs:
       - name: Build and Test
         run: |
           ./gradlew build
+
+      - name: Validate Kubernetes manifests
+        uses: stefanprodan/kube-tools@v1
+        with:
+          kubeval: 0.16.1
+          kubectl: 1.24.3
+          command: |
+            kubeval --strict -d k8s
 
   package:
     name: Package and publish
