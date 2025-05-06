@@ -34,3 +34,5 @@ spec:
               value: user
             - name: SPRING_DATASOURCE_PASSWORD
               value: password
+            - name: SPRING_CLOUD_CONFIG_URI
+              value: http://config-service:8888
