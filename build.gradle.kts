@@ -73,11 +73,15 @@ tasks.bootBuildImage {
 	imageName = project.name
 	environment.set(mapOf("BP_JVM_VERSION" to "21.*"))
 /*
-	docker { // publish to registry, just demo, normally should be done in CI/CD
+    // publish to registry, just demo, normally should be done in CI/CD
+    // it needs to pass below properties to the build command
+    // gw bootBuildImage --imageName ghcr.io/qlwpub/catalog-service --publishImage\
+    // -PDOCKER_USERNAME=qlwpub -PDOCKER_PAT=ghp_mypatxxx -PDOCKER_URL=ghcr.io
+	docker {
 		publishRegistry {
 			username = project.property("DOCKER_USERNAME").toString()
 			password = project.property("DOCKER_PAT").toString()
-			url = project.findProperty("DOCKER_URL").toString()
+			url = project.findProperty("DOCKER_URL").toString()  // project.property("DOCKER_URL").toString() also works
 		}
 	}
 */
