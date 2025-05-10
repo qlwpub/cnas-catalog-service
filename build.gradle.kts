@@ -72,7 +72,7 @@ tasks.bootRun {
 tasks.bootBuildImage {
 	imageName = project.name
 	environment.set(mapOf("BP_JVM_VERSION" to "21.*"))
-/*
+
     // publish to registry, just demo, normally should be done in CI/CD
     // it needs to pass below properties to the build command
     // gw bootBuildImage --imageName ghcr.io/qlwpub/catalog-service --publishImage\
@@ -84,5 +84,4 @@ tasks.bootBuildImage {
 			url = project.findProperty("DOCKER_URL").toString()  // project.property("DOCKER_URL").toString() also works
 		}
 	}
-*/
 }
