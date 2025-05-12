@@ -77,13 +77,11 @@ tasks.bootBuildImage {
     // it needs to pass below properties to the build command
     // gw bootBuildImage --imageName ghcr.io/qlwpub/catalog-service --publishImage\
     // -PDOCKER_USERNAME=qlwpub -PDOCKER_PAT=ghp_mypatxxx -PDOCKER_URL=ghcr.io
-/*
     docker {
         publishRegistry {
-            username = project.property("DOCKER_USERNAME").toString()
-            password = project.property("DOCKER_PAT").toString()
-            url = project.property("DOCKER_URL").toString()
+            username = project.findProperty("DOCKER_USERNAME").toString()
+            password = project.findProperty("DOCKER_PAT").toString()
+            url = project.findProperty("DOCKER_URL").toString()
         }
     }
-*/
 }
