@@ -31,6 +31,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.testcontainers:postgresql")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     // since flywaydb v10, specific database drivers are no longer included in the
     // core library, so we need to add the database driver as a separate dependency
     implementation("org.flywaydb:flyway-core")
