@@ -21,6 +21,7 @@ repositories {
 
 extra["springCloudVersion"] = "2024.0.1"
 extra["testcontainersVersion"] = "1.21.0"
+extra["testKeycloakVersion"] = "3.4.0"
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")  // needed by spring boot
@@ -41,6 +42,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-webflux")
     testImplementation("org.springframework.security:spring-security-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("com.github.dasniko:testcontainers-keycloak:${property("testKeycloakVersion")}")
 
     runtimeOnly("org.postgresql:postgresql")
 
