@@ -4,8 +4,10 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Pattern
 import jakarta.validation.constraints.Positive
+import org.springframework.data.annotation.CreatedBy
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
+import org.springframework.data.annotation.LastModifiedBy
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.annotation.Version
 import java.time.Instant
@@ -44,7 +46,13 @@ data class Book(
     // @Column("created_at") // is not needed, the name is inferred from the property name
     val createdAt: Instant? = null,
 
+    @CreatedBy
+    val createdBy: String? = null,
+
     @LastModifiedDate
     // @Column("last_modified_at") // originally it's named lastModifiedDate
     val lastModifiedAt: Instant? = null,
+
+    @LastModifiedBy
+    val lastModifiedBy: String? = null,
 )
