@@ -21,6 +21,7 @@ class SecurityConfig {
         return http
             .authorizeHttpRequests {
                 it
+                    .requestMatchers("/actuator/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/", "/books/**").permitAll()
                     .anyRequest().hasRole("employee")
             }
