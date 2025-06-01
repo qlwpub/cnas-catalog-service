@@ -12,6 +12,11 @@ spec:
     metadata:
       labels:
         app: catalog-service
+      annotations:
+        prometheus.io/scrape: "true"  # value must be string, so "" is needed
+        prometheus.io/port: "9001"    # same
+        prometheus.io/path: /actuator/prometheus
+
     spec:
       containers:
         - name: catalog-service
