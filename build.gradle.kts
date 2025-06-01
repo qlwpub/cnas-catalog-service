@@ -1,3 +1,5 @@
+import org.gradle.internal.classpath.Instrumented.systemProperty
+
 plugins {
     java
     id("org.springframework.boot") version "3.4.5"
@@ -22,6 +24,7 @@ repositories {
 extra["springCloudVersion"] = "2024.0.1"
 extra["testcontainersVersion"] = "1.21.0"
 extra["testKeycloakVersion"] = "3.4.0"
+extra["otelVersion"] = "2.16.0"
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")  // needed by spring boot
@@ -48,6 +51,7 @@ dependencies {
 
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
+    runtimeOnly("io.opentelemetry.javaagent:opentelemetry-javaagent:${property("otelVersion")}")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
