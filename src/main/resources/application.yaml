@@ -45,11 +45,16 @@ management:
   endpoints:
     web:
       exposure:
-        include: "refresh,info,env,health"
+        include: refresh, info, env, health, metrics, prometheus
   endpoint:
     health:
       show-details: always
       show-components: always
+      probes:
+        enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
 polar:
   greeting: Welcome to the local book catalog from cfg file!
