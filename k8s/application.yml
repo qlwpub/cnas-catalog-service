@@ -1,0 +1,12 @@
+polar:
+  greeting: "Welcome to the book catalog from K8s ConfigMap, via Kustomize, regenerated, 2!"
+spring:
+  datasource:
+    url: jdbc:postgresql://polar-postgres/polardb_catalog
+    username: user
+    password: password
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://polar-keycloak/realms/PolarBookshop
