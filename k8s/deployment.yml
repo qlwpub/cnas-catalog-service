@@ -31,8 +31,8 @@ spec:
           env:
             - name: BPL_JVM_THREAD_COUNT
               value: "50"
-            - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://polar-postgres/polardb_catalog
+#            - name: SPRING_DATASOURCE_URL
+#              value: jdbc:postgresql://polar-postgres/polardb_catalog
             - name: SPRING_PROFILES_ACTIVE
               value: testdata
             - name: SPRING_DATASOURCE_USERNAME
@@ -41,3 +41,10 @@ spec:
               value: password
             - name: SPRING_CLOUD_CONFIG_URI
               value: http://config-service:8888
+          volumeMounts:
+            - name: catalog-config-volume
+              mountPath: /workspace/config
+      volumes:
+        - name: catalog-config-volume
+          configMap:
+            name: catalog-config
