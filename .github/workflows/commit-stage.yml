@@ -51,7 +51,7 @@ jobs:
         uses: bmuschko/setup-kubeconform@v1
       - name: Validate Kubernetes manifests
         run: |
-          kubeconform --strict --verbose k8s
+          kubectl kustomize k8s | kubeconform --strict --verbose 
 
   package:
     name: Package and publish
