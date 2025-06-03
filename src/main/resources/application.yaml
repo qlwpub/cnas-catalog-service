@@ -4,7 +4,7 @@ spring:
   lifecycle: # work with the below shutdown: graceful
     timeout-per-shutdown-phase: 15s
   config: # note this is in this level!!! `spring.config.import`
-    import: "optional:configserver:"
+    import: ""  #"optional:configserver:"
   security:
     oauth2:
       resourceserver:
@@ -12,6 +12,7 @@ spring:
           issuer-uri: http://localhost:8080/realms/PolarBookshop
   cloud:
     config: # another config here.
+      enabled: false
       uri: http://localhost:8888
       request:
         connect-timeout: 5000
